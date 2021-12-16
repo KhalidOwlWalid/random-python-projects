@@ -3,21 +3,30 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Define parameters
-f = lambda y: y*(1-y) # ODE
-h = 0.01 # Step size
+def f(x,y):
+    return -1000 * y + 3000 - 2000 * np.exp(-x)
+
+def analytical_solution(x):
+    return 3 - 0.998 * np.exp(-1000 * x) - 2.002 * np.exp(-x)
+
+# Define the step size
+h = 0.0002
+
 x = np.arange(0, 1 + h, h) # Numerical grid
-y0 = 0.017862 # Initial Condition
+
+# Set the initial condition when x=0
+y0 = 0
 
 # Explicit Euler Method
 y = np.zeros(len(x))
 y[0] = y0
 
 for i in range(0, len(x) - 1):
-    y[i + 1] = y[i] + h*f(y[i])
+    y[i + 1] = y[i] + h*f(x[i],y[i])
 
 plt.figure(figsize = (12, 8))
 plt.plot(x, y, 'bo--', label='Approximate')
-plt.plot(x, np.exp(x-4)/(np.exp(x-4) + 1), 'g', label='Exact')
+plt.plot(x, analytical_solution(x), 'g', label='Exact')
 plt.title('Approximate and Exact Solution \
 for Simple ODE')
 plt.xlabel('t')

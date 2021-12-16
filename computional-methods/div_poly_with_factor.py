@@ -8,10 +8,10 @@ For dividing polynomials with a factor
 # Lowest to biggest n
 # Example: For -3 + 3*x + 4*x**2 
 # (-3,3,4)
-func_1 = (-120,-46,79,-3,-7,1)
+func_1 = ([-12,-13,0,1])
 
 # Give a factor for it to divide with
-factor = (3,1)
+factor = ([-4,1])
 
 # Quotient will return all the coefficients left
 # If n=6, it will return a 5th order polynomial where
