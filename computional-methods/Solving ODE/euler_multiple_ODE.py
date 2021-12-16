@@ -5,8 +5,8 @@ from scipy.integrate import solve_ivp
 
 # Define parameters
 def ode_functions(x,y_1,y_2,y_3):
-    dy1dx = a * (y_2 - y_1)
-    dy2dx = sigma * y_1 - y_2 - y_1 * y_3
+    dy1dx = sigma * (y_2 - y_1)
+    dy2dx = rho * y_1 - y_2 - y_1 * y_3
     dy3dx = -b * y_3 + y_1 * y_2
     return dy1dx, dy2dx, dy3dx
 
