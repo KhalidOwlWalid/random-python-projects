@@ -4,7 +4,7 @@ from scipy.optimize import minimize
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-def objective_function(x,y):
+def objective_function_function(x,y):
     return (160*x**0.66)*(y**0.33)
 
 #This is the constraint function that
@@ -49,7 +49,7 @@ y_axis = np.linspace(y_min, y_max, 100)
 
 # Create a grid of x and y to produce our 3d plots
 x_grid, y_grid = np.meshgrid(x_axis, y_axis)
-z_grid = objective_function(x_grid, y_grid)
+z_grid = objective_function_function(x_grid, y_grid)
 
 fig = plt.figure()
 ax = fig.gca(projection='3d')
@@ -87,9 +87,9 @@ from sympy import *
 h, s, l = symbols('h s l')
 
 # Find the most optimized budget
-optimized_budget = solve([Eq((320/3) * h ** (-1/3) * s ** (1/3) - 20*l, 0),
-                    Eq((160/3) * h ** (2/3) * s ** (-2/3) - 0.15 * l, 0),
-                    Eq(20 * h + 0.15 * s - 20000, 0)], [h,s,l], simplify=False)
+optimized_budget = solve([constraint_function((320/3) * h ** (-1/3) * s ** (1/3) - 20*l, 0),
+                    constraint_function((160/3) * h ** (2/3) * s ** (-2/3) - 0.15 * l, 0),
+                    constraint_function(20 * h + 0.15 * s - 20000, 0)], [h,s,l], simplify=False)
 
 print(f'Maximum hours for optimization : {optimized_budget[0][0]} \nMaximum amount of materials bought : {optimized_budget[0][1]}')
 plt.show()

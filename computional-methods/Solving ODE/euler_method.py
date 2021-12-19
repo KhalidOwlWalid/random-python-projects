@@ -10,9 +10,9 @@ def analytical_solution(x):
     return 3 - 0.998 * np.exp(-1000 * x) - 2.002 * np.exp(-x)
 
 # Define the step size
-h = 0.0002
+h = 0.002
 
-x = np.arange(0, 1 + h, h) # Numerical grid
+x = np.arange(0, 0.3, h) # Numerical grid
 
 # Set the initial condition when x=0
 y0 = 0
